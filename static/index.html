@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Animals World Bank – Loan ATM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Tap-to-start overlay (browsers only allow sound after a click) -->
+  <div id="start-overlay">
+    <button id="start-btn">
+      <span class="card-icon">💳</span>
+      Insert card to enter the bank
+    </button>
+  </div>
+
+  <!-- Bank hall background: animals at work -->
+  <div class="bank-bg" aria-hidden="true">
+    <div class="worker w1">
+      <div class="pair"><span class="animal">🐰</span><span class="tool">💻</span></div><small>Rabbit types loan
+        files</small>
+    </div>
+    <div class="worker w2">
+      <div class="pair"><span class="animal">🦉</span><span class="tool">🪙</span></div><small>Owl counts coins</small>
+    </div>
+    <div class="worker w5">
+      <div class="pair"><span class="animal">🐻</span><span class="tool">🗄️</span></div><small>Bear files
+        papers</small>
+    </div>
+    <div class="worker w3">
+      <div class="pair"><span class="animal">🐘</span><span class="tool">📑</span></div><small>Elephant stamps
+        forms</small>
+    </div>
+    <div class="worker w4">
+      <div class="pair"><span class="animal">🦊</span><span class="tool">☎️</span></div><small>Fox answers calls</small>
+    </div>
+    <div class="worker w7">
+      <div class="pair"><span class="animal">🐹</span><span class="tool">🧮</span></div><small>Hamster adds it
+        up</small>
+    </div>
+    <div class="walker"><span>🐧</span><span>🛒</span></div>
+  </div>
+
+  <div class="stage">
+    <main class="atm">
+      <header class="sign">
+        <span class="sign-bolt"></span>
+        <h1>ANIMALS WORLD BANK</h1>
+        <span class="sign-bolt"></span>
+      </header>
+
+      <div class="bezel">
+        <section class="screen" id="screen">
+          <div class="screen-head">
+            <span>LOAN APPROVAL TERMINAL</span>
+            <span id="clock">--:--</span>
+          </div>
+
+          <form id="loan-form" autocomplete="off">
+            <div class="grid">
+              <label>Age
+                <input type="number" name="person_age" min="18" max="100" value="28" required />
+              </label>
+              <label>Yearly income
+                <input type="number" name="person_income" min="1" step="any" value="60000" required />
+              </label>
+              <label>Home ownership
+                <select name="person_home_ownership" required>
+                  <option>RENT</option>
+                  <option>OWN</option>
+                  <option>MORTGAGE</option>
+                  <option>OTHER</option>
+                </select>
+              </label>
+              <label>Employment (years)
+                <input type="number" name="person_emp_length" min="0" step="any" value="4" required />
+              </label>
+              <label>Loan purpose
+                <select name="loan_intent" required>
+                  <option>PERSONAL</option>
+                  <option>EDUCATION</option>
+                  <option>MEDICAL</option>
+                  <option>VENTURE</option>
+                  <option>HOMEIMPROVEMENT</option>
+                  <option>DEBTCONSOLIDATION</option>
+                </select>
+              </label>
+              <label>Loan grade
+                <select name="loan_grade" required>
+                  <option>A</option>
+                  <option>B</option>
+                  <option selected>C</option>
+                  <option>D</option>
+                  <option>E</option>
+                  <option>F</option>
+                  <option>G</option>
+                </select>
+              </label>
+              <label>Loan amount
+                <input type="number" name="loan_amnt" min="1" step="any" value="10000" required />
+              </label>
+              <label>Interest rate (%)
+                <input type="number" name="loan_int_rate" min="0" step="any" value="11.5" required />
+              </label>
+              <label>Loan % of income
+                <input type="number" name="loan_percent_income" step="any" readonly />
+              </label>
+              <label>Past default on file?
+                <select name="cb_person_default_on_file" required>
+                  <option value="N">No</option>
+                  <option value="Y">Yes</option>
+                </select>
+              </label>
+              <label>Credit history (years)
+                <input type="number" name="cb_person_cred_hist_length" min="0" value="5" required />
+              </label>
+              <button type="submit" id="submit-btn">ENTER</button>
+            </div>
+          </form>
+
+          <div id="rush-msg" class="rush" role="status" aria-live="polite" hidden>
+            🧍🧍🧍 Other customers are waiting behind you. The rush is heavy, so please hurry a little.
+          </div>
+          <div id="error-msg" class="error" role="alert" hidden></div>
+        </section>
+      </div>
+
+      <div class="deck">
+        <div class="keypad" aria-hidden="true">
+          <i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i><i>*</i><i>0</i><i>#</i>
+        </div>
+
+        <div class="dispenser">
+          <div class="slot-label">LOAN DECISION</div>
+          <div class="vault" id="vault">
+            <!-- the note lives behind the bars -->
+            <div class="note-window">
+              <div class="note" id="note">
+                <div class="note-top">ANIMALS WORLD BANK</div>
+                <div class="note-result" id="note-result"></div>
+                <div class="note-detail" id="note-detail"></div>
+              </div>
+            </div>
+            <div class="gate gate-left"></div>
+            <div class="gate gate-right"></div>
+            <div class="padlock" id="padlock">🔒</div>
+          </div>
+          <button id="reset-btn" hidden>Next customer</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floor: turtle with the line sign, speech bubble, monkey greeter -->
+    <div class="floor">
+      <div class="turtle" id="turtle">
+        <div class="line-sign" id="line-sign">
+          <div class="sign-board">CUSTOMERS LINE<span>🙂🙂🙂🙂 ➜</span></div>
+          <div class="sign-pole"></div>
+        </div>
+        <div class="turtle-body">🐢</div>
+      </div>
+
+      <div class="bubble" id="bubble"><span id="bubble-text"></span></div>
+
+      <div class="monkey" id="monkey">
+        <svg viewBox="0 0 120 172" aria-label="Monkey in a suit">
+          <g class="leg l1">
+            <rect x="38" y="138" width="16" height="26" rx="6" fill="#1d2a44" />
+            <ellipse cx="44" cy="167" rx="13" ry="5" fill="#111" />
+          </g>
+          <g class="leg l2">
+            <rect x="66" y="138" width="16" height="26" rx="6" fill="#1d2a44" />
+            <ellipse cx="76" cy="167" rx="13" ry="5" fill="#111" />
+          </g>
+          <path d="M28 150 L33 84 Q60 72 87 84 L92 150 Z" fill="#1d2a44" />
+          <path d="M50 80 L60 108 L70 80 Z" fill="#fff" />
+          <path d="M44 80 L60 108 L40 100 Z" fill="#2c3e63" />
+          <path d="M76 80 L60 108 L80 100 Z" fill="#2c3e63" />
+          <path d="M57 88 L63 88 L65 118 L60 126 L55 118 Z" fill="#c0392b" />
+          <rect x="17" y="84" width="14" height="46" rx="7" fill="#1d2a44" transform="rotate(8 24 88)" />
+          <circle cx="19" cy="134" r="7" fill="#8b5a2b" />
+          <g class="wave-arm">
+            <rect x="84" y="84" width="14" height="46" rx="7" fill="#1d2a44" />
+            <circle cx="91" cy="134" r="7" fill="#8b5a2b" />
+          </g>
+          <g class="head">
+            <circle cx="30" cy="52" r="12" fill="#8b5a2b" />
+            <circle cx="30" cy="52" r="6" fill="#e8c9a0" />
+            <circle cx="90" cy="52" r="12" fill="#8b5a2b" />
+            <circle cx="90" cy="52" r="6" fill="#e8c9a0" />
+            <circle cx="60" cy="48" r="30" fill="#8b5a2b" />
+            <path d="M42 24 Q60 10 78 24 Q60 20 42 24Z" fill="#6b4220" />
+            <ellipse cx="60" cy="58" rx="22" ry="20" fill="#e8c9a0" />
+            <circle cx="51" cy="50" r="3.5" fill="#222" />
+            <circle cx="69" cy="50" r="3.5" fill="#222" />
+            <circle cx="52" cy="49" r="1.1" fill="#fff" />
+            <circle cx="70" cy="49" r="1.1" fill="#fff" />
+            <circle cx="57" cy="60" r="1.4" fill="#7a5a3a" />
+            <circle cx="63" cy="60" r="1.4" fill="#7a5a3a" />
+            <ellipse class="mouth" cx="60" cy="68" rx="7" ry="3" fill="#7a2b2b" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div><!-- /stage -->
+
+  <script src="script.js"></script>
+</body>
+
+</html>

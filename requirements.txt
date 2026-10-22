@@ -1,0 +1,9 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+pandas>=2.0
+numpy>=1.26
+joblib>=1.3
+scikit-learn>=1.3
+# Add any extra libraries your saved model pipeline needs (e.g. xgboost, lightgbm, imbalanced-learn).
+# Pin scikit-learn to the exact version you trained with, or joblib.load may fail.
