@@ -1,3 +1,12 @@
+   ---
+   title: Animals World Bank
+   emoji: 🏧
+   colorFrom: yellow
+   colorTo: gray
+   sdk: docker
+   app_port: 7860
+   ---
+
 # 🏧 Animals World Bank: Loan ATM (Credit Risk Predictor)
 
 An ATM-style web app that predicts whether a loan applicant is a **high or low credit risk**.
