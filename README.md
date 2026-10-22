@@ -8,7 +8,7 @@ and a printed note drops out of the dispenser and gets stamped **LOW RISK** or *
 
 ## 📸 Preview
 
-![Animals World Bank ATM: locked machine on the left, LOW RISK result on the right](https://raw.githubusercontent.com/AsadHamzaZahid/loan_giving_app/main/screenshots/atm_side_by_side.png)
+![Animals World Bank ATM: locked machine on the left, LOW RISK result on the right](<atm_side_by_side.png>)
 
 *Left: the locked ATM waiting for an applicant. Right: the printed note stamped **LOW RISK**.*
 
@@ -34,25 +34,24 @@ and a printed note drops out of the dispenser and gets stamped **LOW RISK** or *
 | ML       | scikit-learn pipeline, pandas, joblib   |
 | Frontend | HTML, CSS, vanilla JavaScript, Web Audio API, Speech Synthesis |
 
-## 📁 Project structure
+## 📁 Files in this repo
 
 ```
-loan_atm/
-├── main.py                  # FastAPI app (serves API and frontend)
-├── requirements.txt
-├── credit_risk_model.pkl    # ← your trained model (add this)
-├── best_threshold.pkl       # ← your tuned threshold (add this)
-├── screenshots/             # README images
-│   ├── atm_locked_complete.png
-│   ├── atm_lowrisk_complete.png
-│   └── atm_side_by_side.png
+loan_giving_app/
+├── main.py                        # FastAPI app (serves the API and the frontend)
+├── requirements.txt               # Python dependencies
+├── Dockerfile                     # Container setup for deployment
+├── .python-version                # Python version used by the host
+├── credit_risk_model.pkl          # Trained scikit-learn pipeline
+├── best_threshold.pkl             # Tuned decision threshold
+├── grant_the_loan_on_the_go.ipynb # Notebook: data cleaning, training and threshold tuning
+├── credit_risk_dataset.csv        # Training data
+├── atm_side_by_side.png           # Preview image used in this README
 └── static/
     ├── index.html
     ├── style.css
     └── script.js
 ```
-
-> The two `.pkl` files come from your notebook. Place them next to `main.py`.
 
 ## 🚀 Run locally
 
