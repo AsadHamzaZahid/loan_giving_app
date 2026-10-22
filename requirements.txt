@@ -1,8 +1,8 @@
-  fastapi[standard]
-  uvicorn[standard]
-  pydantic>=2
-  pandas
-  numpy
-  joblib
-  scikit-learn==1.8.0
-  xgboost==3.2.0
+fastapi[standard]
+uvicorn[standard]
+pydantic>=2
+pandas
+numpy
+joblib
+scikit-learn==1.8.0
+xgboost==3.2.0
